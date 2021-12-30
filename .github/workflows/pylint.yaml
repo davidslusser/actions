@@ -1,5 +1,5 @@
 name: "Run Pylint"
-description: "Runs pylint on supported python versions"
+
 on:
   workflow_call:
     inputs:
