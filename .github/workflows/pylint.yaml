@@ -6,7 +6,10 @@ on:
       src:
         required: false
         type: string
-        default: '.'
+        default: "."
+      py-versions:
+        required: false
+        default: ["3.8", "3.9", "3.10"]
 
 jobs:
   lint:
