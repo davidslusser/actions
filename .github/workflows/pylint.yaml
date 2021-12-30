@@ -7,10 +7,6 @@ on:
         required: false
         type: string
         default: "."
-      
-      - py-versions:
-        required: false
-        default: "test"
 
 jobs:
   lint:
