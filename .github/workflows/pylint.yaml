@@ -10,7 +10,7 @@ on:
       
       - py-versions:
         required: false
-        default: ["3.8", "3.9", "3.10"]
+        default: "test"
 
 jobs:
   lint:
