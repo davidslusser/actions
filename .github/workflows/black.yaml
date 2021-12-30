@@ -1,0 +1,43 @@
+name: "Run black"
+
+on:
+  workflow_call:
+    inputs:
+      src:
+        required: false
+        type: string
+        default: '.'
+
+jobs:
+  black:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install Black
+        run: pip install black
+
+      - name: run black
+        run: |
+          cd src
+          black .
+
+      - name: If needed, commit black changes to the pull request
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A && git diff-index --cached --quiet HEAD || git commit -m 'auto-formats with Black'
+
+      - name: push black changes
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
