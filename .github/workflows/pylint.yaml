@@ -3,11 +3,12 @@ name: "Run Pylint"
 on:
   workflow_call:
     inputs:
-      src:
+      - src:
         required: false
         type: string
         default: "."
-      py-versions:
+      
+      - py-versions:
         required: false
         default: ["3.8", "3.9", "3.10"]
 
