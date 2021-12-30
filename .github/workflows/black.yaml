@@ -6,29 +6,31 @@ on:
       src:
         required: false
         type: string
-        default: '.'
+        default: "."
+      py-version:
+        required: false
+        type: string
+        default: "3.9"
 
 jobs:
   black:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.ref }}
 
-      - name: Set up Python 3.9
+      - name: Set up Python ${{ inputs.py-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: ${{ inputs.py-version }}
 
       - name: Install Black
         run: pip install black
 
       - name: run black
-        run: |
-          cd src
-          black .
+        run: black ${{ inputs.src }}
 
       - name: If needed, commit black changes to the pull request
         run: |
