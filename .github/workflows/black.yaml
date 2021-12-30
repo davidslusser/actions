@@ -3,11 +3,11 @@ name: "Run black"
 on:
   workflow_call:
     inputs:
-      src:
+      - src:
         required: false
         type: string
         default: "."
-      py-version:
+      - py-version:
         required: false
         type: string
         default: "3.9"
