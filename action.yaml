@@ -1,0 +1,12 @@
+name: 'Run Black'
+description: 'Run python Black on the source directory'
+inputs:
+  src-dir:
+    description: 'source directory'
+    required: false
+    default: '.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.src-dir }}
