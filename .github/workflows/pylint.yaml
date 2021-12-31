@@ -31,5 +31,5 @@ jobs:
 
     - name: Analysing the code with pylint
       run: |
-        cd src
+        cd ${{ inputs.src }}
         pylint `ls -R|grep .py$|xargs`
