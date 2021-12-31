@@ -30,13 +30,14 @@ jobs:
         run: pip install black
 
       - name: run black
-        run: black ${{ inputs.src }}
+        run: |
+          git pull
+          black ${{ inputs.src }}
 
       - name: If needed, commit black changes to the pull request
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git pull
           git add -A && git diff-index --cached --quiet HEAD || git commit -m 'auto-formats with Black'
 
       - name: push black changes
