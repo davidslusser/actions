@@ -21,10 +21,10 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
 
-      - name: Set up Python 3.9
+      - name: Set up Python ${{ inputs.py-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: ${{ inputs.py-version }}
 
       - name: Install Black
         run: pip install black
@@ -36,6 +36,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git pull
           git add -A && git diff-index --cached --quiet HEAD || git commit -m 'auto-formats with Black'
 
       - name: push black changes
