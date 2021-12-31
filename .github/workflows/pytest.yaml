@@ -7,10 +7,14 @@ on:
         required: false
         type: string
         default: "."
+      options:
+        required: false
+        type: string
+        default: "-v"
 
 jobs:
   lint:
-    name: "Run Pylint"
+    name: "Run Pytest"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -30,4 +34,4 @@ jobs:
         pip install pytest
 
     - name: Run tests with pytest
-      run: pytest ${{ inputs.src }}
+      run: pytest ${{ inputs.src }} ${{ inputs.options }}
