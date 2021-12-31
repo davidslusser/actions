@@ -1,4 +1,4 @@
-name: "Run Pylint"
+name: "Run Flake8"
 
 on:
   workflow_call:
@@ -14,7 +14,7 @@ on:
 
 jobs:
   lint:
-    name: "Run Pylint"
+    name: "Run Flake8"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -31,7 +31,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pylint
+        pip install flake8
 
     - name: Analysing the code with pylint
-      run: pylint ${{ inputs.src }} ${{ inputs.options }}
+      run: flake8 ${{ inputs.src }} ${{ inputs.options }}
