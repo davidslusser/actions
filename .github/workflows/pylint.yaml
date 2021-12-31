@@ -2,10 +2,11 @@ name: "Run Pylint"
 
 on:
   workflow_call:
-    src:
-      required: false
-      type: string
-      default: "."
+    inputes:
+      src:
+        required: false
+        type: string
+        default: "."
 
 jobs:
   lint:
