@@ -2,7 +2,7 @@ name: "Run Pylint"
 
 on:
   workflow_call:
-    inputes:
+    inputs:
       src:
         required: false
         type: string
