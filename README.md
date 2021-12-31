@@ -1,2 +1,7 @@
-# actions
+# Actions
 local github actions repo
+
+<br/>
+
+### References
+https://docs.github.com/en/actions/learn-github-actions/reusing-workflows
