@@ -2,11 +2,6 @@ name: "Run Pylint"
 
 on:
   workflow_call:
-    inputs:
-      - src:
-        required: false
-        type: string
-        default: "."
 
 jobs:
   lint:
@@ -31,5 +26,5 @@ jobs:
 
     - name: Analysing the code with pylint
       run: |
-        cd ${{ inputs.src }}
+        cd src
         pylint `ls -R|grep .py$|xargs`
