@@ -1,4 +1,4 @@
-name: "Run Bandit"
+name: "Run Bandit..."
 
 on:
   workflow_call:

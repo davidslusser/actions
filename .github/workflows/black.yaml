@@ -10,10 +10,11 @@ on:
       py-version:
         required: false
         type: string
-        default: "3.9"
+        default: "3.x"
 
 jobs:
   black:
+    name: "Run Black"
     runs-on: ubuntu-latest
 
     steps:
@@ -26,7 +27,7 @@ jobs:
         with:
           python-version: ${{ inputs.py-version }}
 
-      - name: Install Black
+      - name: Install dependencies
         run: pip install black
 
       - name: run black
