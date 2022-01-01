@@ -11,6 +11,7 @@ on:
         default: "-v"
       py-versions:
         required: false
+        type: string
         default: "[3.8, 3.9, 3.10]"
 
 jobs:
