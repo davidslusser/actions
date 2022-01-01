@@ -1,5 +1,3 @@
-name: "Run Bandit..."
-
 on:
   workflow_call:
     inputs:
@@ -18,21 +16,21 @@ on:
 
 jobs:
   lint:
-    name: "Run Bandit"
+    name: "Perform security checks via bandit"
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set up Python ${{ inputs.py-version }}
+    - name: "Set up python ${{ inputs.py-version }}"
       uses: actions/setup-python@v2
       with:
         python-version: ${{ inputs.py-version }}
 
-    - name: Install dependencies
+    - name: "Install dependencies"
       run: |
         python -m pip install --upgrade pip
         pip install bandit
 
-    - name: Run security checks with bandit
+    - name: "Run bandit"
       run: bandit ${{ inputs.src }} ${{ inputs.options }}
