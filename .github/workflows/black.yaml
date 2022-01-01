@@ -1,5 +1,3 @@
-name: "Run Black"
-
 on:
   workflow_call:
     inputs:
@@ -14,7 +12,7 @@ on:
 
 jobs:
   black:
-    name: "Run Black"
+    name: "Perform code formatting via black"
     runs-on: ubuntu-latest
 
     steps:
@@ -22,15 +20,15 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
 
-      - name: Set up Python ${{ inputs.py-version }}
+      - name: "Set up python ${{ inputs.py-version }}"
         uses: actions/setup-python@v2
         with:
           python-version: ${{ inputs.py-version }}
 
-      - name: Install dependencies
+      - name: "Install dependencies"
         run: pip install black
 
-      - name: run black
+      - name: "Run black"
         run: |
           git pull
           black ${{ inputs.src }}
@@ -41,7 +39,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add -A && git diff-index --cached --quiet HEAD || git commit -m 'auto-formats with Black'
 
-      - name: push black changes
+      - name: "Push black changes"
         uses: ad-m/github-push-action@v0.5.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
