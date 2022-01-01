@@ -5,6 +5,10 @@ on:
         required: false
         type: string
         default: "."
+      options:
+        required: false
+        type: string
+        default: ""
       py-version:
         required: false
         type: string
@@ -31,7 +35,7 @@ jobs:
       - name: "Run black"
         run: |
           git pull
-          black ${{ inputs.src }}
+          black ${{ inputs.src }} ${{ inputs.options }}
 
       - name: If needed, commit black changes to the pull request
         run: |
