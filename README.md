@@ -31,37 +31,44 @@ jobs:
 &emsp;inputs:
   - **src:** source directory
   - **options:** bandit flags (defaults to "-r")
+  - **pip_install_command:** pip install command (defaults to "pip install bandit")
   - **py-version:** version of python to use (defaults to "3.x")
 
 ### black: *code formatting*
 &emsp;inputs:
   - **src:** source directory
   - **options:** black flags
+  - **pip_install_command:** pip install command (defaults to "pip install black")
   - **py-version:** version of python to use (defaults to "3.x")
 
 ### flake8: *style guide enforcement*
 &emsp;inputs:
   - **src:** source directory
   - **options:** flake8 flags
+  - **pip_install_command:** pip install command (defaults to "pip install flake8")
 
 ### mypy: *static type checking*
 &emsp;inputs:
   - **src:** source directory
   - **options:** mypy flags (defaults to "-v")
+  - **pip_install_command:** pip install command (defaults to "pip install mypy")
 
 ### publish: *push packages to pypi*
 &emsp;inputs:
   - **py-version:** version of python to use (defaults to "3.x")
+  - **pip_install_command:** pip install command (defaults to "pip install setuptools twine wheel")
 
 ### pylint: *static code analysis*
 &emsp;inputs:
   - **src:** source directory
   - **options:** pylint flags
+  - **pip_install_command:** pip install command (defaults to "pip install pylint")
 
 ### pytest: *test code runner*
 &emsp;inputs:
   - **src:** source directory
   - **options:** pytest flags (defaults to "-v")
+  - **pip_install_command:** pip install command (defaults to "pip install pytest")
 
 <br/>
 
