@@ -1,26 +1,22 @@
 on:
   workflow_call:
     inputs:
-      src:
-        required: false
-        type: string
-        default: "."
       options:
         required: false
         type: string
-        default: "-r"
+        default: "check"
       pip_install_command:
         required: false
         type: string
-        default: "pip install bandit"
+        default: "pip install safety"
       py-version:
         required: false
         type: string
         default: "3.x"
 
 jobs:
-  bandit:
-    name: "Perform security checks via bandit"
+  safety:
+    name: "Perform package vulnerability checks via safety"
     runs-on: ubuntu-latest
 
     steps:
@@ -36,5 +32,5 @@ jobs:
         python -m pip install --upgrade pip
         ${{ inputs.pip_install_command }}
 
-    - name: "Run bandit"
-      run: bandit ${{ inputs.src }} ${{ inputs.options }}
+    - name: "Run safety"
+      run: safety ${{ inputs.options }}

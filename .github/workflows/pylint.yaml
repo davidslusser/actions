@@ -15,7 +15,7 @@ on:
         default: "pip install pylint"
 
 jobs:
-  lint:
+  pylint:
     name: "Perform static code analysis via pylint"
     runs-on: ubuntu-latest
     strategy:
