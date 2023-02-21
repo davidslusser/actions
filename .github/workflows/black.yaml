@@ -45,6 +45,7 @@ jobs:
 
       - name: If needed, commit black changes to the pull request
         run: |
+          git config --global --add safe.directory "*"
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A && git diff-index --cached --quiet HEAD || git commit -m 'auto-format with Black'
