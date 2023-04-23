@@ -24,12 +24,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.ref }}
 
       - name: "Set up python ${{ inputs.py-version }}"
-        uses: actions/setup-python@v2
+        uses: actions/checkout@v3
         with:
           python-version: ${{ inputs.py-version }}
 
