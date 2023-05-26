@@ -18,6 +18,9 @@ on:
         type: string
         default: "3.x"
 
+env:
+    GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    
 jobs:
   coveralls:
     name: "Run tests with coverage and publish to Coveralls"
@@ -40,5 +43,4 @@ jobs:
     - name: "Push to Coveralls"
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: "coveralls"
